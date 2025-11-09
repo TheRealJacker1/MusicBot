@@ -35,28 +35,29 @@
             <id>lavalink-releases</id>
             <url>https://maven.lavalink.dev/releases</url>
         </repository>
-        <repository>
-            <id>scijava.public</id>
-            <url>https://maven.scijava.org/content/repositories/public</url>
-        </repository>
     </repositories>
 
     <dependencies>
+        <!-- JDA -->
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
             <version>4.4.1_353</version>
         </dependency>
+
+        <!-- JDA-Utilities via JitPack modules -->
         <dependency>
-            <groupId>com.jagrosh</groupId>
-            <artifactId>jda-utilities-commons</artifactId>
+            <groupId>com.github.jagrosh</groupId>
+            <artifactId>JDA-Utilities-commons</artifactId>
             <version>3.0.5</version>
         </dependency>
         <dependency>
-            <groupId>com.jagrosh</groupId>
-            <artifactId>jda-utilities-command</artifactId>
+            <groupId>com.github.jagrosh</groupId>
+            <artifactId>JDA-Utilities-command</artifactId>
             <version>3.0.5</version>
         </dependency>
+
+        <!-- Modern Lavaplayer -->
         <dependency>
             <groupId>dev.arbjerg</groupId>
             <artifactId>lavaplayer</artifactId>
@@ -68,21 +69,29 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- YouTube extractor -->
         <dependency>
             <groupId>dev.lavalink.youtube</groupId>
             <artifactId>v2</artifactId>
             <version>1.16.0</version>
         </dependency>
+
+        <!-- Other audio sources -->
         <dependency>
             <groupId>com.dunctebot</groupId>
             <artifactId>sourcemanagers</artifactId>
             <version>1.9.0</version>
         </dependency>
+
+        <!-- Lyrics -->
         <dependency>
             <groupId>com.github.jagrosh</groupId>
             <artifactId>JLyrics</artifactId>
             <version>master-SNAPSHOT</version>
         </dependency>
+
+        <!-- Misc -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -98,6 +107,8 @@
             <artifactId>jsoup</artifactId>
             <version>1.15.3</version>
         </dependency>
+
+        <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
