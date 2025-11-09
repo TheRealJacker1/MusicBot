@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Configure Maven settings for JitPack auth
+      - name: Configure Maven settings (JitPack Basic auth)
         run: |
           mkdir -p ~/.m2
           cat > ~/.m2/settings.xml <<'XML'
@@ -29,14 +29,8 @@ jobs:
             <servers>
               <server>
                 <id>jitpack.io</id>
-                <configuration>
-                  <httpHeaders>
-                    <property>
-                      <name>Authorization</name>
-                      <value>Bearer ${env.GITHUB_TOKEN}</value>
-                    </property>
-                  </httpHeaders>
-                </configuration>
+                <username>x-access-token</username>
+                <password>${env.JITPACK_TOKEN}</password>
               </server>
             </servers>
           </settings>
@@ -44,7 +38,7 @@ jobs:
 
       - name: Build with Maven (force update)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JITPACK_TOKEN: ${{ secrets.JITPACK_TOKEN }}
         run: mvn -U -DskipTests package
 
       - name: Upload JAR
