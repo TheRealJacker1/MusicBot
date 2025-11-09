@@ -19,8 +19,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Build with Maven
-        run: mvn -DskipTests package
+      - name: Build with Maven (force update)
+        run: mvn -U -DskipTests package
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
