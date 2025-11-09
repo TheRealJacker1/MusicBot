@@ -13,16 +13,21 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Set up Java
+      - name: Set up Java 17 (Temurin) + Maven cache
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: '17'
+          cache: maven
 
       - name: Build with Maven
         run: mvn -DskipTests package
 
       - name: Upload built JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: JMusicBot
+          path: target/*.jar
         uses: actions/upload-artifact@v4
         with:
           name: JMusicBot
