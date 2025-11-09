@@ -39,17 +39,22 @@ import net.dv8tion.jda.api.entities.Guild;
 public class PlayerManager extends DefaultAudioPlayerManager
 {
     private final Bot bot;
-    
+
     public PlayerManager(Bot bot)
     {
         this.bot = bot;
     }
-    
+
     public void init()
     {
         TransformativeAudioSourceManager.createTransforms(bot.getConfig().getTransforms()).forEach(t -> registerSourceManager(t));
 
-        YoutubeAudioSourceManager yt = new YoutubeAudioSourceManager(true);
+        // Use stable WEB + Music clients for YouTube (avoids WEB_EMBEDDED_PLAYER issues)
+        YoutubeAudioSourceManager yt = new YoutubeAudioSourceManager(
+                true, // allow ytsearch:
+                new dev.lavalink.youtube.clients.StreamingNonMusic.Web(),
+                new dev.lavalink.youtube.clients.music.Music()
+        );
         yt.setPlaylistPageCount(bot.getConfig().getMaxYTPlaylistPages());
         registerSourceManager(yt);
 
@@ -66,17 +71,17 @@ public class PlayerManager extends DefaultAudioPlayerManager
 
         DuncteBotSources.registerAll(this, "en-US");
     }
-    
+
     public Bot getBot()
     {
         return bot;
     }
-    
+
     public boolean hasHandler(Guild guild)
     {
         return guild.getAudioManager().getSendingHandler()!=null;
     }
-    
+
     public AudioHandler setUpHandler(Guild guild)
     {
         AudioHandler handler;
