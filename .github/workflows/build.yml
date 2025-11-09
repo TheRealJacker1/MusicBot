@@ -6,6 +6,14 @@ on:
     branches: [ main ]
 
 jobs:
+name: Build JMusicBot
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
   build:
     runs-on: ubuntu-latest
 
@@ -13,7 +21,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Set up Java 17 (Temurin) + Maven cache
+      - name: Set up Java 17 (Temurin) with Maven cache
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -24,10 +32,6 @@ jobs:
         run: mvn -DskipTests package
 
       - name: Upload built JAR
-        uses: actions/upload-artifact@v4
-        with:
-          name: JMusicBot
-          path: target/*.jar
         uses: actions/upload-artifact@v4
         with:
           name: JMusicBot
