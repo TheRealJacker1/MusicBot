@@ -48,18 +48,18 @@
         <!-- JDA-Utilities from JitPack (lowercase artifactIds) -->
         <dependency>
             <groupId>com.github.jagrosh</groupId>
-            <artifactId>JDA-utilities</artifactId>
+            <artifactId>JDA-Utilities</artifactId>
             <version>3.0.5</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>com.github.jagrosh</groupId>
-            <artifactId>JDA-utilities-commons</artifactId>
+            <artifactId>JDA-Utilities-commons</artifactId>
             <version>3.0.5</version>
         </dependency>
         <dependency>
             <groupId>com.github.jagrosh</groupId>
-            <artifactId>JDA-utilities-command</artifactId>
+            <artifactId>JDA-Utilities-command</artifactId>
             <version>3.0.5</version>
         </dependency>
 
